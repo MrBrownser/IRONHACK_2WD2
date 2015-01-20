@@ -72,6 +72,18 @@ describe CrazyNumbers do
 			res = @cnumbers.set_of_numbers(array)
 			expect(res).to eq([1, 3, 14, 250])
 		end
+
+		it "Takes an array of numbers. If most of them are positive or negative, it should return only the positive or negative ones. Otherwise nil" do
+			array = [1, -1, -3, 14, 327, -25, -250]
+			res = @cnumbers.set_of_numbers(array)
+			expect(res).to eq([-1, -3, -25, -250])
+		end
+
+		it "Takes an array of numbers. If most of them are positive or negative, it should return only the positive or negative ones. Otherwise nil" do
+			array = [1, -1, -3, 14, 327, -25, -250, 6]
+			res = @cnumbers.set_of_numbers(array)
+			expect(res).to eq(nil)
+		end
 	end
 
 	describe "#method_2" do
@@ -83,6 +95,16 @@ describe CrazyNumbers do
 	end
 
 	describe "#method 3" do
+		it "Returns the n element of Fibonacci's sequence" do
+			fnumber = @cnumbers.fibonacci_number(0)
+			expect(fnumber).to eq(0)
+		end
+
+		it "Returns the n element of Fibonacci's sequence" do
+			fnumber = @cnumbers.fibonacci_number(1)
+			expect(fnumber).to eq(1)
+		end
+
 		it "Returns the n element of Fibonacci's sequence" do
 			fnumber = @cnumbers.fibonacci_number(25)
 			expect(fnumber).to eq(75025)
