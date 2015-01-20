@@ -31,6 +31,7 @@ class Lexiconomitron
 	end
 
 	def oompa_loompa(string_arr)
+		remove_tees(string_arr.select { |word| word.length < 4 })
 	end
 
 	def all_in_line(string_arr, string)
@@ -41,49 +42,5 @@ class Lexiconomitron
 
 	def remove_tees(string_arr)
 		string_arr.map { |word| word.gsub("t", "").gsub("T", "") }
-	end
-end
-
-# TESTING
-
-describe Lexiconomitron do
-	before do 
-		@locotron = Lexiconomitron.new
-	end
-
-	describe "#shazam" do
-		it "Testing shazam's method for processing an array of words" do
-			var = ["This", "is", "a", "boring", "test"]
-			res = @locotron.shazam(var)
-
-			expect(res).to eq(["sih", "se"])
-		end
-	end
-
-	describe "#oompa_loompa" do
-		it "Testing oompa_loompa's method for processing an array of words" do
-			var = ["If", "you", "wanna", "be", "my", "lover"]
-			res = @locotron.oompa_loompa(var)
-
-			expect(res).to eq(["if", "you", "be", "my"])
-		end
-	end
-
-	describe "#all_in_line" do
-		it "Testing all_in_line's method for processing an array of words" do
-			var = ["words", "are", "tremendously", "nice"]
-			res = @locotron.all_in_line(var, "=]")
-
-			expect(res).to eq("remendously=]words=]nice=]are")
-		end
-	end
-
-	describe "#supercounter" do
-		it "It returns the number of letters, within all those words, that appear before 't' in the alphabet" do
-			var = ["I", "am", "getting", "tired", "of", "your", "words"]
-			res = @locotron.supercounter(var)
-
-			expect(res).to eq(20)
-		end
 	end
 end
